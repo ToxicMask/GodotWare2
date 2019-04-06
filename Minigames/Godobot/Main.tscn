@@ -2,20 +2,37 @@
 
 [ext_resource path="res://Minigames/Godobot/Scripts/Main.gd" type="Script" id=1]
 [ext_resource path="res://Minigames/Godobot/Scripts/Godobot.gd" type="Script" id=2]
-[ext_resource path="res://Minigames/Godobot/Scenes/Target.tscn" type="PackedScene" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://Minigames/Godobot/Scenes/Aim.tscn" type="PackedScene" id=4]
 
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
+INSTRUCTION = "DESTROY IT!"
+DURATION = 7
 
 [node name="Godobot" type="Node2D" parent="."]
 position = Vector2( 320, 200 )
 script = ExtResource( 2 )
 
-[node name="Target" parent="Godobot" groups=[
-"target",
-] instance=ExtResource( 3 )]
+[node name="Torax" type="Sprite" parent="Godobot"]
+position = Vector2( 0, 25 )
+scale = Vector2( 1.5, 2.5 )
+texture = ExtResource( 3 )
+
+[node name="Joints" type="Node2D" parent="Godobot"]
+
+[node name="Joint_Head" type="Position2D" parent="Godobot/Joints"]
+position = Vector2( 0, -55 )
+
+[node name="Joint_Center" type="Position2D" parent="Godobot/Joints"]
+position = Vector2( 0, 25 )
+
+[node name="Joint_L_Arm" type="Position2D" parent="Godobot/Joints"]
+position = Vector2( 48, -15 )
+
+[node name="Joint_R_Arm" type="Position2D" parent="Godobot/Joints"]
+position = Vector2( -48, -15 )
 
 [node name="Aim" parent="." instance=ExtResource( 4 )]
-position = Vector2( 320, 88 )
+position = Vector2( 320, -100 )
 
