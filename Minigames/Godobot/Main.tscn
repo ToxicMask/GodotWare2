@@ -12,7 +12,7 @@ NAME = "Godobot"
 INSTRUCTION = "DESTROY IT!"
 
 [node name="Godobot" type="Node2D" parent="."]
-position = Vector2( 128, 250 )
+position = Vector2( 128, 272 )
 rotation = 0.174533
 script = ExtResource( 2 )
 
@@ -22,7 +22,6 @@ scale = Vector2( 1.5, 2.5 )
 texture = ExtResource( 3 )
 
 [node name="Joints" type="Node2D" parent="Godobot"]
-editor/display_folded = true
 position = Vector2( 0, -57 )
 
 [node name="Joint_Head" type="Position2D" parent="Godobot/Joints"]
@@ -32,10 +31,10 @@ position = Vector2( 0, -55 )
 position = Vector2( 0, 25 )
 
 [node name="Joint_L_Arm" type="Position2D" parent="Godobot/Joints"]
-position = Vector2( 48, -15 )
+position = Vector2( 48, -24 )
 
 [node name="Joint_R_Arm" type="Position2D" parent="Godobot/Joints"]
-position = Vector2( -48, -15 )
+position = Vector2( -48, -24 )
 
 [node name="Anim" type="AnimationPlayer" parent="Godobot"]
 autoplay = "walking"

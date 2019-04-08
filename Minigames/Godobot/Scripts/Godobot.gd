@@ -24,9 +24,10 @@ func _build_body(diff:int, max_weak:int):
 	var w_pos =0
 	
 	for j in $Joints.get_children():
-		if weak_parts[w_pos]:
-			var t = target.instance(PackedScene.GEN_EDIT_STATE_INSTANCE)
-			j.add_child(t)
+		var j_key: String = j.get_name().right(6).to_lower()
+		var t = target.instance(PackedScene.GEN_EDIT_STATE_INSTANCE)
+		t.build_part(j_key, weak_parts[w_pos])
+		j.add_child(t)
 		w_pos +=1
 
 func _check():
@@ -34,7 +35,11 @@ func _check():
 	var count: int = 0
 	
 	for j in $Joints.get_children():
-		count += j.get_child_count()
+		for J in j.get_children():
+			if J.is_in_group("target"):
+				count +=1
+		
+		
 	
 	if count == 0:
 		emit_signal("clear")
